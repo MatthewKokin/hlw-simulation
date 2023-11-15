@@ -1,27 +1,18 @@
 import PowerPlant from './PowerPlant.js';
 import data from './reactors_data.js';
 
-const dateEl = document.getElementById("date-el")
-const dateBtn = document.getElementById("increment-btn")
-let count = 2023;
-
-function increment() {
-    count += 1;
-    dateEl.textContent = "November " + count;
-}
-
-dateBtn.addEventListener('click', increment)
-
 function createPowerPlants() {
     for (let plant of data) {
         plant.name = new PowerPlant(plant.name, plant.capacity, plant.closing_date);
     }
 }
 
+let wasteVolume = 0
 function setOperationalDays(days) {
     for (let plant of data) {
-        plant.name.operate(days);
+        wasteVolume += plant.name.operate(days);
     }
+    return wasteVolume
 }
 
 function seeStatus() {
@@ -45,5 +36,20 @@ function seeStatus() {
 }
 
 createPowerPlants();
-setOperationalDays(2000);
+
 seeStatus();
+
+const dateEl = document.getElementById("date-el")
+const dateBtn = document.getElementById("increment-btn")
+const wasteEl = document.getElementById("waste-value")
+
+let count = 2023;
+let days = 0;
+function increment() {
+    count += 1;
+    days += 365;
+    dateEl.textContent = "November " + count;
+    wasteVolume = setOperationalDays(days)
+    wasteEl.textContent = wasteVolume
+}
+dateBtn.addEventListener('click', increment)
