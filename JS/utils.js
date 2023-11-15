@@ -3,7 +3,7 @@ import data from './reactors_data.js';
 
 export function createPowerPlants() {
     for (let plant of data) {
-        plant.name = new PowerPlant(plant.name, plant.capacity, plant.days_before_closing);
+        plant.name = new PowerPlant(plant.name, plant.capacity, plant.days_before_closing, plant.isOperational, plant.construction_done);
     }
 }
 

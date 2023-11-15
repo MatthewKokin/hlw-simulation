@@ -1,5 +1,5 @@
 export default class PowerPlant {
-    constructor(name, capacity, daysBeforeClosing) {
+    constructor(name, capacity, daysBeforeClosing, isOperational, constructionFinishTime) {
         this.name = name;
         this.capacity = capacity; // in GW
         this.wastePerMwPerDay = (capacity * 65) / 365;
@@ -7,6 +7,30 @@ export default class PowerPlant {
         this.generatedElectricity = 0;
         this.operationalDays = 0; // total days the plant has been operational
         this.daysBeforeClosing = daysBeforeClosing;
+        this.isOperational = isOperational
+        this.constructionFinishTime = constructionFinishTime
+    }
+    continueBuilding(days) {
+        this.constructionFinishTime -= days
+    }
+
+    isOperatingOrBuilding(days) {
+        if (!this.isOperational){
+            if (this.constructionFinishTime >= days) {
+                continueBuilding(days)
+                this.operate(0)
+            }
+            else if (this.constructionFinishTime < days) {
+                this.isOperational = true
+                this.constructionFinishTime = 0
+
+                daysOperating = days - this.constructionFinishTime
+                this.operate(daysOperating)
+            }
+            else{
+                throw new Error("Unhandled case in isOperatingOrBuilding/PowerPlant.js");
+            }
+        }
     }
 
     operate(days = 1) {
