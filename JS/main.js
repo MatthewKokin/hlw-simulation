@@ -1,13 +1,16 @@
 import PowerPlant from './PowerPlant.js';
 import data from './reactors_data.js';
 
-let dateEl = document.getElementById("date-el")
+const dateEl = document.getElementById("date-el")
+const dateBtn = document.getElementById("increment-btn")
 let count = 2023;
 
 function increment() {
     count += 1;
     dateEl.textContent = "November " + count;
 }
+
+dateBtn.addEventListener('click', increment)
 
 function createPowerPlants() {
     for (let plant of data) {
