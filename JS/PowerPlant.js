@@ -1,26 +1,23 @@
-import daysBeforeDate from './daysBeforeDate.js';
-
 export default class PowerPlant {
-    constructor(name, capacity, closingDate) {
+    constructor(name, capacity, daysBeforeClosing) {
         this.name = name;
         this.capacity = capacity; // in GW
         this.wastePerMwPerDay = (capacity * 65) / 365;
-        this.closingDate = closingDate;
         this.nuclearWaste = 0; // in metric tons
         this.generatedElectricity = 0;
         this.operationalDays = 0; // total days the plant has been operational
-        this.daysBeforeClosing = 0;
+        this.daysBeforeClosing = daysBeforeClosing;
     }
 
     operate(days = 1) {
-        this.daysBeforeClosing = daysBeforeDate(this.closingDate);
-        
         if (days < this.daysBeforeClosing) {
-            this.operationalDays += days;
+            this.operationalDays = days;
             this.daysBeforeClosing -= days;
-        } else {
-            this.operationalDays += this.daysBeforeClosing;
+        } else if (this.daysBeforeClosing != 0 && days > this.daysBeforeClosing) {
+            this.operationalDays = this.daysBeforeClosing;
             this.daysBeforeClosing = 0;
+        } else if (this.daysBeforeClosing == 0) {
+            this.operationalDays = 0
         }
         
         this.generateWaste(this.operationalDays);
