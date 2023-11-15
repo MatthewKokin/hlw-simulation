@@ -50,6 +50,6 @@ function increment() {
     days += 365;
     dateEl.textContent = "November " + count;
     wasteVolume = setOperationalDays(days)
-    wasteEl.textContent = wasteVolume
+    wasteEl.textContent = "Total waste / tonnes: " + wasteVolume
 }
 dateBtn.addEventListener('click', increment)
