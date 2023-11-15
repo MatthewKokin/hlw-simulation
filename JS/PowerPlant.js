@@ -20,9 +20,11 @@ export default class PowerPlant {
             this.operationalDays = 0
         }
         
-        this.generateWaste(this.operationalDays);
+        const wasteMass = this.generateWaste(this.operationalDays);
+        const wasteVolume = this.wasteMassToVolume(wasteMass)
         this.generateElectricity(this.operationalDays);
-        return this.generateWaste(this.operationalDays)
+
+        return wasteVolume
     }
 
     generateElectricity(days) {
@@ -33,5 +35,8 @@ export default class PowerPlant {
         const wasteGenerated = this.capacity * this.wastePerMwPerDay * days;
         this.nuclearWaste += wasteGenerated;
         return wasteGenerated
+    }
+    wasteMassToVolume(mass) {
+        return mass / 19.8
     }
 }

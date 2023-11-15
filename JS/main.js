@@ -48,7 +48,7 @@ function increment() {
     days += 365;
     dateEl.textContent = "November " + count;
     wasteVolume = setOperationalDays(days)
-    wasteEl.textContent = "Total waste / tonnes: " + wasteVolume
+    wasteEl.textContent = "New waste generated / m^3: " + wasteVolume
     updateChart(count, wasteVolume);
 }
 dateBtn.addEventListener('click', increment)
@@ -56,8 +56,8 @@ dateBtn.addEventListener('click', increment)
 
 
 let chart = null;
-let yearsData = [];
-let wasteData = [];
+let yearsData = [2023];
+let wasteData = [0];
 
 function setupChart() {
     const ctx = document.getElementById('wasteChart').getContext('2d');
@@ -66,7 +66,7 @@ function setupChart() {
         data: {
             labels: yearsData, // X-axis labels
             datasets: [{
-                label: 'Total Waste (tonnes)',
+                label: 'Total Waste (m^3)',
                 data: wasteData, // Y-axis data
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
