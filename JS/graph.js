@@ -3,7 +3,7 @@ export let yearsData = [2023];
 export let wasteData = [0];
 
 export function setupChart() {
-    const ctx = document.getElementById('wasteChart').getContext('2d');
+    const ctx = document.getElementById('waste-chart').getContext('2d');
     chart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -27,7 +27,7 @@ export function setupChart() {
 }
 
 export function updateChart(year, waste) {
-    yearsData.push("November " + year);
+    yearsData.push(year);
     wasteData.push(waste);
     chart.update();
 }
