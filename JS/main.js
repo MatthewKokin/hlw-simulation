@@ -24,6 +24,9 @@ setupChart();
 
 
 /*
+Bugfix
+    Hikley Point C and Sizewell C will be operational till like 2100, but waste is stopped generating after 2034 (+ its kinda too much?)
+
 Features
     New Objects
         Recycling fascility
@@ -35,6 +38,7 @@ Features
         build in progress
     
     Dashboard
+        Dshboard with Live reactors
         Total uranium required
         Total HLW
         Interim storage total costs
