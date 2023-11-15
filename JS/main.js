@@ -21,3 +21,21 @@ dateBtn.addEventListener('click', increment)
 
 createPowerPlants();
 setupChart();
+
+
+/*
+Features
+    New Objects
+        Recycling fascility
+        Power plant
+        SMR
+    
+    Power Plant features
+        decomissioning
+        build in progress
+    
+    Dashboard
+        Total uranium required
+        Total HLW
+        Interim storage total costs
+*/
