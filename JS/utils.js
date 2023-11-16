@@ -2,9 +2,12 @@ import PowerPlant from './PowerPlant.js';
 import data from './reactors_data.js';
 
 export function createPowerPlants() {
+    let dashboardHTML = ''
     for (let plant of data) {
         plant.name = new PowerPlant(plant.name, plant.capacity, plant.days_before_closing, plant.isOperational, plant.construction_done);
+        dashboardHTML += makeDashboard(plant.name)
     }
+    renderDashboard(dashboardHTML)
 }
 
 export function setOperationalDays(days) {
@@ -15,6 +18,24 @@ export function setOperationalDays(days) {
     return wasteVolume
 }
 
+function makeDashboard(plant){
+    const dashboardHTML = 
+    `
+    <div class="item">
+        <p class="name">${plant.name}</p>
+        <p class="capacity">${plant.capacity} GW</p>
+        <p class="total-waste-produced">${plant.name.nuclearWaste} m^3</p>
+        <p class="waste-produced-this-year">${plant.name.nuclearWaste} m^3</p>
+        <p class="status">${plant.name.isOperational}</p>
+    </div>
+    `
+    return dashboardHTML
+}
+
+function renderDashboard(dashboardHTML) {
+    const dashboardEl = document.getElementById('dashboard')
+    dashboardEl.innerHTML =+ dashboardHTML
+}
 
 // function seeStatus() {
 //     let totalWaste = 0;
