@@ -34,21 +34,26 @@ export default class PowerPlant {
     }
 
     operate(days = 1) {
+        let wasteMassThisYear = 0
+
         if (days < this.daysBeforeClosing) {
-            this.operationalDays = days;
+            wasteMassThisYear = this.generateWaste(days)
+            this.operationalDays += days;
             this.daysBeforeClosing -= days;
         } else if (this.daysBeforeClosing != 0 && days > this.daysBeforeClosing) {
-            this.operationalDays = this.daysBeforeClosing;
+            wasteMassThisYear = this.generateWaste(this.daysBeforeClosing)
+            this.operationalDays += this.daysBeforeClosing;
             this.daysBeforeClosing = 0;
         } else if (this.daysBeforeClosing == 0) {
-            this.operationalDays = 0
+            wasteMassThisYear = 0
         }
         
-        const wasteMass = this.generateWaste(this.operationalDays);
-        const wasteVolume = this.wasteMassToVolume(wasteMass)
-        this.generateElectricity(this.operationalDays);
+        const wasteVolumeThisYear = this.wasteMassToVolume(wasteMassThisYear)
+        this.nuclearWaste = this.generateWaste(this.operationalDays)
+        let wasteVolumeTotal = this.wasteMassToVolume(this.nuclearWaste);
+        this.generateElectricity(this.operationalDays)
 
-        return wasteVolume
+        return [wasteVolumeThisYear, wasteVolumeTotal]
     }
 
     generateElectricity(days) {

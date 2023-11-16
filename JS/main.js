@@ -14,17 +14,16 @@ function increment() {
     count += 1;
     days += 365;
     dateEl.textContent = "November " + count;
-    wasteVolume += setOperationalDays(powerPlants, days)
+    [wasteVolumeThisYearTotal, wasteVolumesThisYear] = setOperationalDays(powerPlants, days)
+    wasteVolume += wasteVolumeThisYearTotal
     wasteEl.textContent = "New waste generated / m^3: " + wasteVolume
     updateChart(count, wasteVolume);
-    // updateDashboard();
+    updateDashboard();
 }
 dateBtn.addEventListener('click', increment)
 
-console.log("Hi");
-setupChart();
-// updateDashboard();
-
+setupChart()
+updateDashboard(powerPlants)
 
 /*
 Priority:

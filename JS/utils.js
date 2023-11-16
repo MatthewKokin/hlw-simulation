@@ -11,12 +11,18 @@ export function createPowerPlants() {
 }
 
 export function setOperationalDays(plants, days) {
-    let wasteVolume = 0
+    let wasteVolumeThisYearTotal = 0;
+    let wasteVolumesThisYear = [];
+
     for (let plant of plants) {
-        wasteVolume += plant.operate(days);
+        let [wasteVolumeThisYearForPlant, wasteVolumeTotalForPlant] = plant.operate(days);
+        wasteVolumeThisYearTotal += wasteVolumeThisYearForPlant;
+        wasteVolumesThisYear.push(wasteVolumeThisYearForPlant);
     }
-    return wasteVolume
+
+    return [wasteVolumeThisYearTotal, wasteVolumesThisYear];
 }
+
 
 function makeDashboardItem(plant) {
     const dashboardHTML = `
@@ -24,8 +30,8 @@ function makeDashboardItem(plant) {
         <div class="item">
             <p class="name">${plant.name}</p>
             <p class="capacity">${plant.capacity.toFixed(2)} GW</p>
-            <p class="total-waste-produced">${plant.name.nuclearWaste.toFixed(2)} m^3</p>
-            <p class="waste-produced-this-year">${plant.name.generateWaste(plant.operationalDays).toFixed(2)} m^3</p>
+            <p class="total-waste-produced">${plant.nuclearWaste.toFixed(2)} m^3</p>
+            <p class="waste-produced-this-year">${plant.generateWaste(plant.operationalDays).toFixed(2)} m^3</p>
             <p class="status">${plant.name.isOperational ? 'Operating' : 'Not Operating'}</p>
         </div>
     </div>
@@ -39,9 +45,9 @@ function renderDashboard(dashboardHTML) {
     dashboardEl.innerHTML = dashboardHTML
 }
 
-export function updateDashboard() {
+export function updateDashboard(plants) {
     let dashboardHTML = '';
-    for (let plant of data) {
+    for (let plant of plants) {
         dashboardHTML += makeDashboardItem(plant);
     }
     renderDashboard(dashboardHTML);
