@@ -1,3 +1,7 @@
+body{
+    color: 292929;
+    font-family: 'Inter', sans-serif;
+}
 .container{
     display: flex;
     flex-direction: column;
@@ -10,19 +14,28 @@
     margin: auto;
 }
 
-.dashboard{
+.dashboard-intro{
+    background-color: ECE9FD;
+}
+
+.dashboard-items{
     border: 2px solid red;
-    padding: 10px;
 }
 .item {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    border: 2px solid black;
 }
+.dashboard-items .item-container:nth-child(odd) {
+    background-color: white;
+}
+
+.dashboard-items .item-container:nth-child(even) {
+    background-color: #F6F6F6; 
+}
+
 
 .item-container{
     display: block;
-    padding-bottom: 1em;
 }

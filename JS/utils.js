@@ -30,9 +30,9 @@ function makeDashboardItem(plant, wasteProducedThisYear) {
     <div class="item-container">
         <div class="item">
             <p class="name">${plant.name}</p>
-            <p class="capacity">${plant.capacity.toFixed(2)} GW</p>
-            <p class="total-waste-produced">${plant.nuclearWaste.toFixed(2)} m^3</p>
-            <p class="waste-produced-this-year">${wasteProducedText} m^3</p>
+            <p class="capacity">${plant.capacity.toFixed(2)}</p>
+            <p class="total-waste-produced">${plant.nuclearWaste.toFixed(2)}</p>
+            <p class="waste-produced-this-year">${wasteProducedText}</p>
             <p class="status">${plant.isOperational ? 'Operating' : 'Not Operating'}</p>
         </div>
     </div>
@@ -43,7 +43,7 @@ function makeDashboardItem(plant, wasteProducedThisYear) {
 
 
 function renderDashboard(dashboardHTML) {
-    const dashboardEl = document.getElementById('dashboard')
+    const dashboardEl = document.getElementById('dashboard-items')
     dashboardEl.innerHTML = dashboardHTML
 }
 
