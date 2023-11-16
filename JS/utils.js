@@ -24,15 +24,16 @@ export function setOperationalDays(plants, days) {
 }
 
 
-function makeDashboardItem(plant) {
+function makeDashboardItem(plant, wasteProducedThisYear) {
+    const wasteProducedText = (typeof wasteProducedThisYear === 'number') ? wasteProducedThisYear.toFixed(2) : 'N/A';
     const dashboardHTML = `
     <div class="item-container">
         <div class="item">
             <p class="name">${plant.name}</p>
             <p class="capacity">${plant.capacity.toFixed(2)} GW</p>
             <p class="total-waste-produced">${plant.nuclearWaste.toFixed(2)} m^3</p>
-            <p class="waste-produced-this-year">${plant.generateWaste(plant.operationalDays).toFixed(2)} m^3</p>
-            <p class="status">${plant.name.isOperational ? 'Operating' : 'Not Operating'}</p>
+            <p class="waste-produced-this-year">${wasteProducedText} m^3</p>
+            <p class="status">${plant.isOperational ? 'Operating' : 'Not Operating'}</p>
         </div>
     </div>
     `;
@@ -40,15 +41,16 @@ function makeDashboardItem(plant) {
 }
 
 
+
 function renderDashboard(dashboardHTML) {
     const dashboardEl = document.getElementById('dashboard')
     dashboardEl.innerHTML = dashboardHTML
 }
 
-export function updateDashboard(plants) {
+export function updateDashboard(plants, wasteVolumesThisYear) {
     let dashboardHTML = '';
-    for (let plant of plants) {
-        dashboardHTML += makeDashboardItem(plant);
-    }
+    plants.forEach((plant, index) => {
+        dashboardHTML += makeDashboardItem(plant, wasteVolumesThisYear[index]);
+    });
     renderDashboard(dashboardHTML);
 }

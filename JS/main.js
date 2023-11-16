@@ -5,6 +5,7 @@ const dateEl = document.getElementById("date-el")
 const dateBtn = document.getElementById("increment-btn")
 const wasteEl = document.getElementById("waste-value")
 let powerPlants = createPowerPlants()
+let zeroArray = new Array(powerPlants.length).fill(0);
 
 let count = 2023;
 let days = 0;
@@ -14,16 +15,17 @@ function increment() {
     count += 1;
     days += 365;
     dateEl.textContent = "November " + count;
+    let wasteVolumeThisYearTotal, wasteVolumesThisYear
     [wasteVolumeThisYearTotal, wasteVolumesThisYear] = setOperationalDays(powerPlants, days)
     wasteVolume += wasteVolumeThisYearTotal
     wasteEl.textContent = "New waste generated / m^3: " + wasteVolume
     updateChart(count, wasteVolume);
-    updateDashboard();
+    updateDashboard(powerPlants, wasteVolumeThisYearTotal);
 }
 dateBtn.addEventListener('click', increment)
 
 setupChart()
-updateDashboard(powerPlants)
+updateDashboard(powerPlants, zeroArray)
 
 /*
 Priority:
