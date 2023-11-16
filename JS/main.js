@@ -4,6 +4,7 @@ import { setupChart, updateChart } from './graph.js';
 const dateEl = document.getElementById("date-el")
 const dateBtn = document.getElementById("increment-btn")
 const wasteEl = document.getElementById("waste-value")
+let powerPlants = createPowerPlants()
 
 let count = 2023;
 let days = 0;
@@ -13,16 +14,16 @@ function increment() {
     count += 1;
     days += 365;
     dateEl.textContent = "November " + count;
-    wasteVolume += setOperationalDays(days)
+    wasteVolume += setOperationalDays(powerPlants, days)
     wasteEl.textContent = "New waste generated / m^3: " + wasteVolume
     updateChart(count, wasteVolume);
-    updateDashboard();
+    // updateDashboard();
 }
 dateBtn.addEventListener('click', increment)
 
-createPowerPlants();
+console.log("Hi");
 setupChart();
-updateDashboard();
+// updateDashboard();
 
 
 /*

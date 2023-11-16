@@ -2,10 +2,10 @@ const data = [
     {name: "Hartlepool", capacity: 1.185, days_before_closing: 137, isOperational: true, construction_done: null},
     {name: "Heysham_A", capacity: 1.060, days_before_closing: 46, isOperational: true, construction_done: null},
     {name: "Heysham_B", capacity: 1.240, days_before_closing: 2238, isOperational: true, construction_done: null},
-    {name: "Sizewell-B", capacity: 1.198, days_before_closing: 4064, isOperational: true, construction_done: null},
+    {name: "Sizewell_B", capacity: 1.198, days_before_closing: 4064, isOperational: true, construction_done: null},
     {name: "Torness", capacity: 1.200, days_before_closing: 2238, isOperational: true, construction_done: null},
-    {name: "Hinkley-Point-C", capacity: 3.20, days_before_closing: 65*365, isOperational: false, construction_done: 717},
-    {name: "Sizewell-C", capacity: 3.20, days_before_closing: 65*365, isOperational: false, construction_done: 352 + (7 * 365)},
+    {name: "Hinkley_Point_C", capacity: 3.20, days_before_closing: 65*365, isOperational: false, construction_done: 717},
+    {name: "Sizewell_C", capacity: 3.20, days_before_closing: 65*365, isOperational: false, construction_done: 352 + (7 * 365)},
 ]
 
 export default data
