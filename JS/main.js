@@ -1,4 +1,4 @@
-import {createPowerPlants, setOperationalDays} from './utils.js'
+import {createPowerPlants, setOperationalDays, updateDashboard} from './utils.js'
 import { setupChart, updateChart } from './graph.js';
 
 const dateEl = document.getElementById("date-el")
@@ -16,11 +16,13 @@ function increment() {
     wasteVolume += setOperationalDays(days)
     wasteEl.textContent = "New waste generated / m^3: " + wasteVolume
     updateChart(count, wasteVolume);
+    updateDashboard();
 }
 dateBtn.addEventListener('click', increment)
 
 createPowerPlants();
 setupChart();
+updateDashboard();
 
 
 /*
