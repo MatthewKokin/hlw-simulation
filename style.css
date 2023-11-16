@@ -5,7 +5,18 @@
     align-items: center;
 }
 
-.waste-chart{
-    display: block;
+.chart{
     width: 80%;
+    margin: auto;
+}
+
+.dashboard{
+    border: 2px solid red;
+}
+.item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid red;
 }
