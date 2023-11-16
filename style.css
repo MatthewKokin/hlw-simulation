@@ -12,11 +12,17 @@
 
 .dashboard{
     border: 2px solid red;
+    padding: 10px;
 }
 .item {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    border: 2px solid red;
+    border: 2px solid black;
+}
+
+.item-container{
+    display: block;
+    padding-bottom: 1em;
 }

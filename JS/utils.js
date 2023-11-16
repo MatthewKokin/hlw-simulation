@@ -17,12 +17,14 @@ export function setOperationalDays(days) {
 
 function makeDashboardItem(plant) {
     const dashboardHTML = `
-    <div class="item">
-        <p class="name">${plant.name}</p>
-        <p class="capacity">${plant.capacity.toFixed(2)} GW</p>
-        <p class="total-waste-produced">${plant.plantObj.nuclearWaste.toFixed(2)} m^3</p>
-        <p class="waste-produced-this-year">${plant.plantObj.generateWaste(plant.operationalDays).toFixed(2)} m^3</p>
-        <p class="status">${plant.plantObj.isOperational ? 'Operating' : 'Not Operating'}</p>
+    <div class="item-container">
+        <div class="item">
+            <p class="name">${plant.name}</p>
+            <p class="capacity">${plant.capacity.toFixed(2)} GW</p>
+            <p class="total-waste-produced">${plant.plantObj.nuclearWaste.toFixed(2)} m^3</p>
+            <p class="waste-produced-this-year">${plant.plantObj.generateWaste(plant.operationalDays).toFixed(2)} m^3</p>
+            <p class="status">${plant.plantObj.isOperational ? 'Operating' : 'Not Operating'}</p>
+        </div>
     </div>
     `;
     return dashboardHTML;
