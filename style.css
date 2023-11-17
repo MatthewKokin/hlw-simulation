@@ -8,6 +8,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 500px;
 }
 
 .readings{
@@ -48,6 +49,10 @@ body{
     margin: auto;
     font-size: 1em;
     padding: 10px;
+}
+
+canvas {
+    margin: auto;
 }
 
 .chart h2 {

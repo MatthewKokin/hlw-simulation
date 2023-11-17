@@ -11,7 +11,7 @@ export function setupChart() {
         data: {
             labels: yearsData, // X-axis labels
             datasets: [{
-                label: 'Total Waste (m³)',
+                label: 'HLW (m³)',
                 data: wasteData, // Y-axis data
                 fill: true, // Add a hue under the line
                 backgroundColor: 'rgba(255, 165, 0, 0.2)',
@@ -19,7 +19,7 @@ export function setupChart() {
                 tension: 0.1,
                 pointRadius: 0 // Remove the dots on the graph
             },{
-                label: 'Uranium Used (tonne / year)',
+                label: 'Uranium (tonne / year)',
                 data: uraniumMassData,
                 fill: true, // Enable fill for the uranium dataset
                 backgroundColor: 'rgba(255, 99, 132, 0.2)', // Use a semi-transparent background color

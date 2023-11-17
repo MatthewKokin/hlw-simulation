@@ -29,7 +29,7 @@ function increment() {
     uraniumMassEl.innerHTML = "Uranium: " + totalUraniumUsedThisYear.toFixed(0) + " tonne / year"
     energyEl.innerHTML = "Energy: " + totalElectricityThisYear.toFixed(2) + " GW / year"
     BWREl.innerHTML = "BWR: " + BWRcontainers.toFixed(0) + " containers"
-    PWREl.innerHTML = "BWR: " + PWRcontainers.toFixed(0) + " containers"
+    PWREl.innerHTML = "PWR: " + PWRcontainers.toFixed(0) + " containers"
 
     updateChart(count, wasteVolumeAllTimeTotal, totalUraniumUsedThisYear, totalElectricityThisYear)
     updateDashboard(powerPlants, wasteVolumesThisYear);
