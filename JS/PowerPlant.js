@@ -76,6 +76,7 @@ export default class PowerPlant {
         return wasteGenerated
     }
     wasteMassToVolume(mass) {
-        return mass / 19.8
+        //Density is 18.4 tonne per m^3, assume 1:1 conditionning with glass, or if not coditionned, then the volume of a container
+        return (mass / 18.4) * 1.5
     }
 }
