@@ -1,8 +1,7 @@
 export default class PowerPlant {
-    constructor(name, capacity, daysBeforeClosing, isOperational, constructionFinishTime, isBuilding) {
+    constructor(name, capacity, daysBeforeClosing, isOperational, constructionFinishTime, isBuilding, type) {
         this.name = name;
         this.capacity = capacity; // in GW
-        this.wastePerMwPerDay = (capacity * 65) / 365;
         this.nuclearWaste = 0; // in metric tons
         this.generatedElectricity = 0;
         this.operationalDays = 0; // total days the plant has been operational
@@ -10,7 +9,24 @@ export default class PowerPlant {
         this.isOperational = isOperational
         this.constructionFinishTime = constructionFinishTime
         this.isBuilding = isBuilding
+        this.type = type
+        this.uraniumYearlyConsumption = 0
+        this.wastePerDay = 0
+        
+        this.calculateUraniumYearlyConsumption()
+        this.calculateWastePerDay()
     }
+
+    calculateUraniumYearlyConsumption(){
+        let tonnesOfUperYear = this.type === "AGR" ? 78 : 22
+        this.uraniumYearlyConsumption = this.capacity * tonnesOfUperYear
+    }
+
+    calculateWastePerDay(){
+        this.wastePerDay = this.uraniumYearlyConsumption / 365
+    }
+
+
     continueBuilding(days) {
         this.constructionFinishTime -= days
     }
@@ -71,7 +87,7 @@ export default class PowerPlant {
     }
 
     generateWaste(days) {
-        const wasteGenerated = this.capacity * this.wastePerMwPerDay * days;
+        const wasteGenerated = this.capacity * this.wastePerDay * days;
         this.nuclearWaste += wasteGenerated;
         return wasteGenerated
     }
