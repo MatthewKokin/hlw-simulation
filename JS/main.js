@@ -16,7 +16,7 @@ function increment() {
     dateEl.textContent = "November " + count;
     let wasteVolumeAllTimeTotal, wasteVolumesThisYear
     [wasteVolumeAllTimeTotal, wasteVolumesThisYear] = setOperationalDays(powerPlants, days)
-    wasteEl.textContent = "New waste generated / m^3: " + wasteVolumeAllTimeTotal
+    wasteEl.innerHTML = "New waste generated: " + wasteVolumeAllTimeTotal.toFixed(0) + " m<sup>3</sup>"
     updateChart(count, wasteVolumeAllTimeTotal);
     updateDashboard(powerPlants, wasteVolumesThisYear);
 }

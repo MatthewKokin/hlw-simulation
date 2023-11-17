@@ -14,6 +14,11 @@ body{
     margin: auto;
 }
 
+#increment-btn{
+    border: none;
+    padding: 50px 200px;
+}
+
 .dashboard-intro{
     background-color: ECE9FD;
 }
