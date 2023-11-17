@@ -6,6 +6,10 @@ const dateBtn = document.getElementById("increment-btn")
 const wasteEl = document.getElementById("waste-value")
 const uraniumMassEl = document.getElementById("uranium-mass-used")
 const energyEl = document.getElementById("energy-generated")
+const BWREl = document.getElementById("BWR-containers")
+const PWREl = document.getElementById("PWR-containers")
+
+
 let powerPlants = createPowerPlants()
 let zeroArray = new Array(powerPlants.length).fill(0);
 
@@ -15,12 +19,17 @@ function increment() {
     count += 1;
     const days = 365;
     dateEl.textContent = "November " + count;
-    let wasteVolumeAllTimeTotal, wasteVolumesThisYear, totalUraniumUsedThisYear, totalElectricityThisYear
-    [wasteVolumeAllTimeTotal, wasteVolumesThisYear, totalUraniumUsedThisYear, totalElectricityThisYear] = setOperationalDays(powerPlants, days)
+    let wasteVolumeAllTimeTotal, wasteVolumesThisYear, totalUraniumUsedThisYear, totalElectricityThisYear, BWRwaste, PWRwaste
+    [wasteVolumeAllTimeTotal, wasteVolumesThisYear, totalUraniumUsedThisYear, totalElectricityThisYear, BWRwaste, PWRwaste] = setOperationalDays(powerPlants, days)
+
+    const BWRcontainers = BWRwaste / 1.703
+    const PWRcontainers = PWRwaste / 0.981
 
     wasteEl.innerHTML = "New waste generated: " + wasteVolumeAllTimeTotal.toFixed(0) + " m<sup>3</sup>"
     uraniumMassEl.innerHTML = "Uranium: " + totalUraniumUsedThisYear.toFixed(0) + " tonne / year"
     energyEl.innerHTML = "Energy: " + totalElectricityThisYear.toFixed(2) + " GW / year"
+    BWREl.innerHTML = "BWR: " + BWRcontainers.toFixed(0) + " containers"
+    PWREl.innerHTML = "BWR: " + PWRcontainers.toFixed(0) + " containers"
 
     updateChart(count, wasteVolumeAllTimeTotal, totalUraniumUsedThisYear, totalElectricityThisYear)
     updateDashboard(powerPlants, wasteVolumesThisYear);

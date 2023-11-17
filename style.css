@@ -25,10 +25,17 @@ body{
     border-bottom: 1px solid #EAECF0;
 }
 
-.params{
+.readings h3{
+    margin: 0;
+    padding: 10px;
+    border-bottom: 1px solid #EAECF0;
+}
+
+.hor{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    margin: 0 10px 0 10px;
 }
 
 
