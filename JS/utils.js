@@ -25,13 +25,14 @@ export function setOperationalDays(plants, days) {
 
 
 function makeDashboardItem(plant, wasteProducedThisYear) {
-    const wasteProducedText = (typeof wasteProducedThisYear === 'number') ? wasteProducedThisYear.toFixed(2) : 'N/A';
     const status = plant.isOperational ? 'Operating' : (plant.isBuilding ? 'Is Building' : 'Not Operating');
     const plantTotalWasteVolume = plant.wasteMassToVolume(plant.nuclearWaste).toFixed(2)
+    const plantName = plant.name.replace(/_/g, ' ');
+    const wasteProducedText = (typeof wasteProducedThisYear === 'number') ? wasteProducedThisYear.toFixed(2) : 'N/A';
 
     const dashboardHTML = `
         <tr class="item">
-            <td class="name">${plant.name}</td>
+            <td class="name">${plantName}</td>
             <td class="capacity">${plant.capacity.toFixed(2)}</td>
             <td class="total-waste-produced">${plantTotalWasteVolume}</td>
             <td class="waste-produced-this-year">${wasteProducedText}</td>
