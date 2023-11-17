@@ -1,6 +1,7 @@
 export let chart = null;
 export let yearsData = [2023];
 export let wasteData = [0];
+export let uraniumMassData = [459];
 
 export function setupChart() {
     const ctx = document.getElementById('waste-chart').getContext('2d');
@@ -16,6 +17,14 @@ export function setupChart() {
                 borderColor: 'rgb(75, 192, 192)',
                 tension: 0.1,
                 pointRadius: 0 // Remove the dots on the graph
+            },{
+                label: 'Total Uranium Used (tonne)',
+                data: uraniumMassData,
+                fill: true, // Enable fill for the uranium dataset
+                backgroundColor: 'rgba(255, 99, 132, 0.2)', // Use a semi-transparent background color
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1,
+                pointRadius: 0
             }]
         },
         options: {
@@ -51,8 +60,10 @@ export function setupChart() {
 
 
 
-export function updateChart(year, waste) {
+export function updateChart(year, waste, uraniumUsed) {
     yearsData.push(year);
     wasteData.push(waste);
+    uraniumMassData.push(uraniumUsed);
     chart.update();
 }
+

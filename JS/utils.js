@@ -12,14 +12,16 @@ export function createPowerPlants() {
 export function setOperationalDays(plants, days) {
     let wasteVolumeAllTimeTotal = 0; // For all the factories
     let wasteVolumesThisYear = []; // For each factory
+    let totalUraniumUsedThisYear = 0 // For all the factories
 
     for (let plant of plants) {
-        let [wasteVolumeThisYearForPlant, wasteVolumeTotalForPlant] = plant.isOperatingOrBuilding(days)
+        let [wasteVolumeThisYearForPlant, wasteVolumeTotalForPlant, uraniumUsedThisYear] = plant.isOperatingOrBuilding(days)
         wasteVolumesThisYear.push(wasteVolumeThisYearForPlant)
         wasteVolumeAllTimeTotal += wasteVolumeTotalForPlant
+        totalUraniumUsedThisYear += uraniumUsedThisYear
     }
 
-    return [wasteVolumeAllTimeTotal, wasteVolumesThisYear];
+    return [wasteVolumeAllTimeTotal, wasteVolumesThisYear, totalUraniumUsedThisYear];
 }
 
 

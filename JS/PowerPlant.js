@@ -60,18 +60,24 @@ export default class PowerPlant {
 
     operate(days) {
         let wasteMassThisYear = 0
+        let uraniumUsedThisYear = 0
 
         if (days < this.daysBeforeClosing) {
             wasteMassThisYear = this.generateWaste(days)
+            uraniumUsedThisYear = this.useUranium(days)
+
             this.operationalDays += days;
             this.daysBeforeClosing -= days;
         } else if (this.daysBeforeClosing != 0 && days > this.daysBeforeClosing) {
             wasteMassThisYear = this.generateWaste(this.daysBeforeClosing)
+            uraniumUsedThisYear = this.useUranium(this.daysBeforeClosing)
+
             this.operationalDays += this.daysBeforeClosing;
             this.daysBeforeClosing = 0;
             this.isOperational = false
         } else if (this.daysBeforeClosing == 0) {
             wasteMassThisYear = 0
+            uraniumUsedThisYear = 0
         }
         
         const wasteVolumeThisYear = this.wasteMassToVolume(wasteMassThisYear)
@@ -79,7 +85,7 @@ export default class PowerPlant {
         let wasteVolumeTotal = this.wasteMassToVolume(this.nuclearWaste);
         this.generateElectricity(this.operationalDays)
 
-        return [wasteVolumeThisYear, wasteVolumeTotal]
+        return [wasteVolumeThisYear, wasteVolumeTotal, uraniumUsedThisYear]
     }
 
     generateElectricity(days) {
@@ -94,5 +100,9 @@ export default class PowerPlant {
     wasteMassToVolume(mass) {
         //Density is 18.4 tonne per m^3, assume 1:1 conditionning with glass, or if not coditionned, then the volume of a container
         return (mass / 18.4) * 1.5
+    }
+
+    useUranium(days){
+        return (this.uraniumYearlyConsumption / 365)*days
     }
 }
