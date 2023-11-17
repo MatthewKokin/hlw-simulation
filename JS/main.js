@@ -8,11 +8,10 @@ let powerPlants = createPowerPlants()
 let zeroArray = new Array(powerPlants.length).fill(0);
 
 let count = 2023;
-let days = 0;
 
 function increment() {
     count += 1;
-    days += 365;
+    const days = 365;
     dateEl.textContent = "November " + count;
     let wasteVolumeAllTimeTotal, wasteVolumesThisYear
     [wasteVolumeAllTimeTotal, wasteVolumesThisYear] = setOperationalDays(powerPlants, days)
