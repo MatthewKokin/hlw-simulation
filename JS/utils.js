@@ -6,7 +6,6 @@ export function createPowerPlants() {
     for (let i = 0; i < data.length; i++) {
         powerPlants.push(new PowerPlant(data[i].name, data[i].capacity, data[i].days_before_closing, data[i].isOperational, data[i].construction_done, data[i].isBuilding))
     }
-    console.log(powerPlants)
     return powerPlants
 }
 
@@ -49,6 +48,5 @@ export function updateDashboard(plants, wasteVolumesThisYear) {
     });
     const dashboardEl = document.getElementById('dashboard-items');
     dashboardEl.innerHTML = dashboardHTML;
-    console.log("wasteVolumesThisYear " + wasteVolumesThisYear);
 }
 

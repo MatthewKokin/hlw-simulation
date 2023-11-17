@@ -9,7 +9,7 @@ export function setupChart() {
         data: {
             labels: yearsData, // X-axis labels
             datasets: [{
-                label: 'Total Waste (m^3)',
+                label: 'Total Waste (m³)',
                 data: wasteData, // Y-axis data
                 fill: false,
                 borderColor: 'rgb(75, 192, 192)',
@@ -19,12 +19,22 @@ export function setupChart() {
         options: {
             scales: {
                 y: {
-                    beginAtZero: true
+                    title: {
+                        display: true,
+                        text: 'HLW Volume / m³' // Label for the Y-axis
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Time' 
+                    }
                 }
             }
         }
     });
 }
+
 
 export function updateChart(year, waste) {
     yearsData.push(year);

@@ -1,6 +1,7 @@
 body{
     color: 292929;
     font-family: 'Inter', sans-serif;
+    background-color: whitesmoke;
 }
 .container{
     display: flex;
@@ -10,8 +11,24 @@ body{
 }
 
 .chart{
-    width: 80%;
+    background-color: white;
+    width: 90%;
+    height: 30%;
+    border: 1px solid #EAECF0;
+    border-radius: 10px;
     margin: auto;
+    font-size: 1em;
+    padding: 10px;
+}
+
+.chart h2 {
+    border-bottom: 1px solid #EAECF0;
+    padding: 10px;
+    margin-top: 0;
+}
+
+#waste-chart{
+    font-size: 2em;
 }
 
 #increment-btn{
