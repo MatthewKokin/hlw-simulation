@@ -9,18 +9,16 @@ let zeroArray = new Array(powerPlants.length).fill(0);
 
 let count = 2023;
 let days = 0;
-let wasteVolume = 0
 
 function increment() {
     count += 1;
     days += 365;
     dateEl.textContent = "November " + count;
-    let wasteVolumeThisYearTotal, wasteVolumesThisYear
-    [wasteVolumeThisYearTotal, wasteVolumesThisYear] = setOperationalDays(powerPlants, days)
-    wasteVolume += wasteVolumeThisYearTotal
-    wasteEl.textContent = "New waste generated / m^3: " + wasteVolume
-    updateChart(count, wasteVolume);
-    updateDashboard(powerPlants, wasteVolumeThisYearTotal);
+    let wasteVolumeAllTimeTotal, wasteVolumesThisYear
+    [wasteVolumeAllTimeTotal, wasteVolumesThisYear] = setOperationalDays(powerPlants, days)
+    wasteEl.textContent = "New waste generated / m^3: " + wasteVolumeAllTimeTotal
+    updateChart(count, wasteVolumeAllTimeTotal);
+    updateDashboard(powerPlants, wasteVolumesThisYear);
 }
 dateBtn.addEventListener('click', increment)
 

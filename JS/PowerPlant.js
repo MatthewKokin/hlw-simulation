@@ -1,5 +1,5 @@
 export default class PowerPlant {
-    constructor(name, capacity, daysBeforeClosing, isOperational, constructionFinishTime) {
+    constructor(name, capacity, daysBeforeClosing, isOperational, constructionFinishTime, isBuilding) {
         this.name = name;
         this.capacity = capacity; // in GW
         this.wastePerMwPerDay = (capacity * 65) / 365;
@@ -9,31 +9,40 @@ export default class PowerPlant {
         this.daysBeforeClosing = daysBeforeClosing;
         this.isOperational = isOperational
         this.constructionFinishTime = constructionFinishTime
+        this.isBuilding = isBuilding
     }
     continueBuilding(days) {
         this.constructionFinishTime -= days
     }
 
     isOperatingOrBuilding(days) {
-        if (!this.isOperational){
-            if (this.constructionFinishTime >= days) {
-                continueBuilding(days)
-                this.operate(0)
+        if (this.isBuilding){
+            if (this.constructionFinishTime > days) {
+                this.continueBuilding(days)
+                return this.operate(0)
+            }
+            else if (this.constructionFinishTime == days) {
+                this.continueBuilding(days)
+                this.isBuilding = false
+                this.isOperational = true
+                return this.operate(0)
             }
             else if (this.constructionFinishTime < days) {
+                this.isBuilding = false
                 this.isOperational = true
-                this.constructionFinishTime = 0
-
-                daysOperating = days - this.constructionFinishTime
-                this.operate(daysOperating)
+                this.daysOperating = days - this.constructionFinishTime
+                this.continueBuilding(this.constructionFinishTime)
+                return this.operate(this.daysOperating)
             }
             else{
                 throw new Error("Unhandled case in isOperatingOrBuilding/PowerPlant.js");
             }
+        } else {
+            return this.operate(days)
         }
     }
 
-    operate(days = 1) {
+    operate(days) {
         let wasteMassThisYear = 0
 
         if (days < this.daysBeforeClosing) {
@@ -44,6 +53,7 @@ export default class PowerPlant {
             wasteMassThisYear = this.generateWaste(this.daysBeforeClosing)
             this.operationalDays += this.daysBeforeClosing;
             this.daysBeforeClosing = 0;
+            this.isOperational = false
         } else if (this.daysBeforeClosing == 0) {
             wasteMassThisYear = 0
         }

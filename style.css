@@ -19,23 +19,29 @@ body{
 }
 
 .dashboard-items{
-    border: 2px solid red;
 }
+
 .item {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+
 }
-.dashboard-items .item-container:nth-child(odd) {
+.dashboard-items .item:nth-child(odd) {
     background-color: white;
 }
 
-.dashboard-items .item-container:nth-child(even) {
+.dashboard-items .item:nth-child(even) {
     background-color: #F6F6F6; 
 }
 
+.dashboard-table{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 24;
+}
 
-.item-container{
-    display: block;
+.dashboard-table th,
+.dashboard-table td {
+    width: 150px;
+    height: 50px; 
+    padding: 8px; 
 }

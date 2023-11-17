@@ -19,16 +19,18 @@
 
         <div class="dashboard">
             <h1>Dashboard</h1>
-            <div class="dashboard-intro">
-                <div class="item">
-                    <p class="name">Name</p>
-                    <p class="capacity">Capacity (GW)</p>
-                    <p class="total-waste-produced">Total waste (m<sup>3</sup>)</p>
-                    <p class="waste-produced-this-year">This year waste (m<sup>3</sup>)</p>
-                    <p class="status">Status</p>
-                </div>
-            </div>
-            <div class="dashboard-items" id="dashboard-items"></div>
+            <table class="dashboard-table">
+                <thead>
+                    <tr class="dashboard-intro">
+                        <th class="name">Name</th>
+                        <th class="capacity">Capacity (GW)</th>
+                        <th class="total-waste-produced">Total waste (m<sup>3</sup>)</th>
+                        <th class="waste-produced-this-year">This year waste (m<sup>3</sup>)</th>
+                        <th class="status">Status</th>
+                    </tr>
+                </thead>
+                <tbody class="dashboard-items" id="dashboard-items"></tbody>
+            </table>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script type="module" src="./JS/main.js"></script>
