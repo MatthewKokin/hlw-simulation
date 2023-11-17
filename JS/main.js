@@ -22,7 +22,7 @@ function increment() {
     uraniumMassEl.innerHTML = "Uranium: " + totalUraniumUsedThisYear.toFixed(0) + " tonne / year"
     energyEl.innerHTML = "Energy: " + totalElectricityThisYear.toFixed(2) + " GW / year"
 
-    updateChart(count, wasteVolumeAllTimeTotal, totalUraniumUsedThisYear)
+    updateChart(count, wasteVolumeAllTimeTotal, totalUraniumUsedThisYear, totalElectricityThisYear)
     updateDashboard(powerPlants, wasteVolumesThisYear);
 }
 dateBtn.addEventListener('click', increment)
