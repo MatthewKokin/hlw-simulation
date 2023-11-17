@@ -65,12 +65,14 @@ export default class PowerPlant {
         if (days < this.daysBeforeClosing) {
             wasteMassThisYear = this.generateWaste(days)
             uraniumUsedThisYear = this.useUranium(days)
+            this.generateElectricity(days)
 
             this.operationalDays += days;
             this.daysBeforeClosing -= days;
         } else if (this.daysBeforeClosing != 0 && days > this.daysBeforeClosing) {
             wasteMassThisYear = this.generateWaste(this.daysBeforeClosing)
             uraniumUsedThisYear = this.useUranium(this.daysBeforeClosing)
+            this.generateElectricity(this.daysBeforeClosing)
 
             this.operationalDays += this.daysBeforeClosing;
             this.daysBeforeClosing = 0;
@@ -78,12 +80,12 @@ export default class PowerPlant {
         } else if (this.daysBeforeClosing == 0) {
             wasteMassThisYear = 0
             uraniumUsedThisYear = 0
+            this.generateElectricity(0)
         }
         
         const wasteVolumeThisYear = this.wasteMassToVolume(wasteMassThisYear)
         this.nuclearWaste = this.generateWaste(this.operationalDays)
         let wasteVolumeTotal = this.wasteMassToVolume(this.nuclearWaste);
-        this.generateElectricity(this.operationalDays)
 
         return [wasteVolumeThisYear, wasteVolumeTotal, uraniumUsedThisYear]
     }

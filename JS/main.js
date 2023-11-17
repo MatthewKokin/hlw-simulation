@@ -5,6 +5,7 @@ const dateEl = document.getElementById("date-el")
 const dateBtn = document.getElementById("increment-btn")
 const wasteEl = document.getElementById("waste-value")
 const uraniumMassEl = document.getElementById("uranium-mass-used")
+const energyEl = document.getElementById("energy-generated")
 let powerPlants = createPowerPlants()
 let zeroArray = new Array(powerPlants.length).fill(0);
 
@@ -14,10 +15,13 @@ function increment() {
     count += 1;
     const days = 365;
     dateEl.textContent = "November " + count;
-    let wasteVolumeAllTimeTotal, wasteVolumesThisYear, totalUraniumUsedThisYear
-    [wasteVolumeAllTimeTotal, wasteVolumesThisYear, totalUraniumUsedThisYear] = setOperationalDays(powerPlants, days)
+    let wasteVolumeAllTimeTotal, wasteVolumesThisYear, totalUraniumUsedThisYear, totalElectricityThisYear
+    [wasteVolumeAllTimeTotal, wasteVolumesThisYear, totalUraniumUsedThisYear, totalElectricityThisYear] = setOperationalDays(powerPlants, days)
+
     wasteEl.innerHTML = "New waste generated: " + wasteVolumeAllTimeTotal.toFixed(0) + " m<sup>3</sup>"
     uraniumMassEl.innerHTML = "Uranium: " + totalUraniumUsedThisYear.toFixed(0) + " tonne / year"
+    energyEl.innerHTML = "Energy: " + totalElectricityThisYear.toFixed(2) + " GW / year"
+
     updateChart(count, wasteVolumeAllTimeTotal, totalUraniumUsedThisYear)
     updateDashboard(powerPlants, wasteVolumesThisYear);
 }

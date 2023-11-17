@@ -13,15 +13,18 @@ export function setOperationalDays(plants, days) {
     let wasteVolumeAllTimeTotal = 0; // For all the factories
     let wasteVolumesThisYear = []; // For each factory
     let totalUraniumUsedThisYear = 0 // For all the factories
+    let totalElectricityThisYear = 0 // For all the factories
 
     for (let plant of plants) {
         let [wasteVolumeThisYearForPlant, wasteVolumeTotalForPlant, uraniumUsedThisYear] = plant.isOperatingOrBuilding(days)
         wasteVolumesThisYear.push(wasteVolumeThisYearForPlant)
         wasteVolumeAllTimeTotal += wasteVolumeTotalForPlant
         totalUraniumUsedThisYear += uraniumUsedThisYear
+        totalElectricityThisYear += plant.generatedElectricity
     }
+    console.log(totalElectricityThisYear);
 
-    return [wasteVolumeAllTimeTotal, wasteVolumesThisYear, totalUraniumUsedThisYear];
+    return [wasteVolumeAllTimeTotal, wasteVolumesThisYear, totalUraniumUsedThisYear, totalElectricityThisYear];
 }
 
 
