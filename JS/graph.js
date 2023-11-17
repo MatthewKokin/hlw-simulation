@@ -9,31 +9,46 @@ export function setupChart() {
         data: {
             labels: yearsData, // X-axis labels
             datasets: [{
-                label: 'Total Waste (m³)',
+                label: 'Total Waste (m^3)',
                 data: wasteData, // Y-axis data
-                fill: false,
+                fill: true, // Add a hue under the line
+                backgroundColor: 'rgba(75, 192, 192, 0.2)', // Semi-transparent fill color
                 borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1
+                tension: 0.1,
+                pointRadius: 0 // Remove the dots on the graph
             }]
         },
         options: {
             scales: {
                 y: {
+                    beginAtZero: true,
+                    grid: {
+                        display: false // Remove the grid lines
+                    },
                     title: {
                         display: true,
-                        text: 'HLW Volume / m³' // Label for the Y-axis
+                        text: 'HLW Volume / m³'
                     }
                 },
                 x: {
+                    grid: {
+                        display: false // Remove the grid lines
+                    },
                     title: {
                         display: true,
-                        text: 'Time' 
+                        text: 'Time'
                     }
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom' // Move the legend to the bottom
                 }
             }
         }
     });
 }
+
 
 
 export function updateChart(year, waste) {
