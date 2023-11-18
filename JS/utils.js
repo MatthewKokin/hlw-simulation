@@ -40,7 +40,9 @@ export function setOperationalDays(plants, days) {
 
 
 function makeDashboardItem(plant, wasteProducedThisYear) {
-    const status = plant.isOperational ? 'Operating' : (plant.isBuilding ? 'Is Building' : 'Not Operating');
+    const status = plant.isOperational ? 'Operating' : (plant.isBuilding ? 'Is Building' : (plant.isStartedbuilding ? 'Not Operating' : "Planned"));
+    // The plants that are not operational because they are done generating electricity would have to have isStartedbuilding to be true for them to be built, where as not operational because they are not even buit yet are not started to built
+
     const plantTotalWasteVolume = plant.wasteMassToVolume(plant.nuclearWaste).toFixed(2)
     const plantName = plant.name.replace(/_/g, ' ');
     const wasteProducedText = (typeof wasteProducedThisYear === 'number') ? wasteProducedThisYear.toFixed(2) : 'N/A';
