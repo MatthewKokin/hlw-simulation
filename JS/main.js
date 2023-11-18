@@ -4,6 +4,7 @@ import { setupChart, updateChart } from './graph.js';
 const dateEl = document.getElementById("date-el")
 const dateBtn = document.getElementById("increment-btn")
 const wasteEl = document.getElementById("waste-value")
+const totalWasteEl = document.getElementById("total-waste-value")
 const uraniumMassEl = document.getElementById("uranium-mass-used")
 const energyEl = document.getElementById("energy-generated")
 const BWREl = document.getElementById("BWR-containers")
@@ -26,6 +27,8 @@ function increment() {
     const PWRcontainers = PWRwaste / 0.981
 
     wasteEl.innerHTML = "New waste generated: " + wasteVolumeAllTimeTotal.toFixed(0) + " m<sup>3</sup>"
+    const allTimeWaste = wasteVolumeAllTimeTotal + 1670
+    totalWasteEl.innerHTML = "Total waste: " + allTimeWaste.toFixed(0) + " m<sup>3</sup>"
     uraniumMassEl.innerHTML = "Uranium: " + totalUraniumUsedThisYear.toFixed(0) + " tonne / year"
     energyEl.innerHTML = "Energy: " + totalElectricityThisYear.toFixed(2) + " GW / year"
     BWREl.innerHTML = "BWR: " + BWRcontainers.toFixed(0) + " containers"
