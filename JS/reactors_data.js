@@ -394,8 +394,8 @@ const data = [
         "isBuilding": false,
         "type": "PWR",
         "isStartedbuilding": false,
-        "startedBuildingIn": 7714,
-        "stringDate": "01-01-2045"
+        "startedBuildingIn": 7348,
+        "stringDate": "01-01-2044"
     },
     {
         "name": "SMR-33",
@@ -411,6 +411,54 @@ const data = [
     },
     {
         "name": "SMR-34",
+        "capacity": 0.47,
+        "days_before_closing": 23725,
+        "isOperational": false,
+        "construction_done": 1460,
+        "isBuilding": false,
+        "type": "PWR",
+        "isStartedbuilding": false,
+        "startedBuildingIn": 7714,
+        "stringDate": "01-01-2045"
+    },
+    {
+        "name": "SMR-35",
+        "capacity": 0.47,
+        "days_before_closing": 23725,
+        "isOperational": false,
+        "construction_done": 1460,
+        "isBuilding": false,
+        "type": "PWR",
+        "isStartedbuilding": false,
+        "startedBuildingIn": 7714,
+        "stringDate": "01-01-2045"
+    },
+    {
+        "name": "SMR-36",
+        "capacity": 0.47,
+        "days_before_closing": 23725,
+        "isOperational": false,
+        "construction_done": 1460,
+        "isBuilding": false,
+        "type": "PWR",
+        "isStartedbuilding": false,
+        "startedBuildingIn": 8079,
+        "stringDate": "01-01-2046"
+    },
+    {
+        "name": "SMR-37",
+        "capacity": 0.47,
+        "days_before_closing": 23725,
+        "isOperational": false,
+        "construction_done": 1460,
+        "isBuilding": false,
+        "type": "PWR",
+        "isStartedbuilding": false,
+        "startedBuildingIn": 8079,
+        "stringDate": "01-01-2046"
+    },
+    {
+        "name": "SMR-38",
         "capacity": 0.47,
         "days_before_closing": 23725,
         "isOperational": false,
