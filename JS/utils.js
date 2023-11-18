@@ -27,8 +27,10 @@ export function setOperationalDays(plants, days) {
 
         if (plant.type === "AGR") {
             BWRwaste += wasteVolumeTotalForPlant
-        } else if (plant.type === "EPR") {
+        } else if (plant.type === "EPR" || plant.type === "PWR") {
         PWRwaste += wasteVolumeTotalForPlant
+        } else {
+            throw new Error("Unhandled case")
         }
     }
     console.log(totalElectricityThisYear);

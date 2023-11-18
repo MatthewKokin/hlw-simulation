@@ -20,8 +20,20 @@ export default class PowerPlant {
     }
 
     calculateUraniumYearlyConsumption(){
-        let tonnesOfUperYear = this.type === "AGR" ? 78 : 22
-        this.uraniumYearlyConsumption = this.capacity * tonnesOfUperYear
+        let tonnesOfUperYear
+        if (this.type === "AGR") {
+            tonnesOfUperYear = 78
+            this.uraniumYearlyConsumption = this.capacity * tonnesOfUperYear
+        } else if (this.type === "EPR"){
+            tonnesOfUperYear = 22
+            this.uraniumYearlyConsumption = this.capacity * tonnesOfUperYear
+        } else if (this.type === "PWR"){
+            tonnesOfUperYear = 4.75 * 18.4
+            // in the paper it is said that it is 4.75 m^3 / year of waste, so the mass of U that is required is V(HLW) * density(HLW)
+            this.uraniumYearlyConsumption = tonnesOfUperYear
+        } else {
+            throw new Error("Unhandled case")
+        }
     }
 
     calculateWastePerDay(){
