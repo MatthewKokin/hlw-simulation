@@ -55,11 +55,15 @@ Features
     
     Power Plant features
         decomissioning
-        build in progress
+        build in progress ✅
     
     Dashboard
-        Dshboard with Live reactors
-        Total uranium required
-        Total HLW
+        Dshboard with Live reactors ✅
+        Total uranium required ✅
+        Total HLW ✅
         Interim storage total costs
+
+Gov Goal:24 GW
+Wikipedia: 470 MWe units will cost around £1.8 billion once in full production
+(https://en.wikipedia.org/wiki/Rolls-Royce_SMR)
 */
