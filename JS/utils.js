@@ -4,7 +4,8 @@ import data from './reactors_data.js';
 export function createPowerPlants() {
     const powerPlants = [];
     for (let i = 0; i < data.length; i++) {
-        powerPlants.push(new PowerPlant(data[i].name, data[i].capacity, data[i].days_before_closing, data[i].isOperational, data[i].construction_done, data[i].isBuilding, data[i].type))
+        powerPlants.push(new PowerPlant(data[i].name, data[i].capacity, data[i].days_before_closing, data[i].isOperational, data[i].construction_done, data[i].isBuilding, data[i].type, data[i].isStartedbuilding, data[i].startedBuildingIn))
+        console.log(data[i].startedBuildingIn, data[i].isStartedbuilding);
     }
     return powerPlants
 }

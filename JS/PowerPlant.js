@@ -1,5 +1,5 @@
 export default class PowerPlant {
-    constructor(name, capacity, daysBeforeClosing, isOperational, constructionFinishTime, isBuilding, type) {
+    constructor(name, capacity, daysBeforeClosing, isOperational, constructionFinishTime, isBuilding, type, isStartedbuilding, startedBuildingIn) {
         this.name = name;
         this.capacity = capacity; // in GW
         this.nuclearWaste = 0; // in metric tons
@@ -12,6 +12,8 @@ export default class PowerPlant {
         this.type = type
         this.uraniumYearlyConsumption = 0
         this.wastePerDay = 0
+        this.isStartedbuilding = isStartedbuilding
+        this.startedBuildingIn = startedBuildingIn
         
         this.calculateUraniumYearlyConsumption()
         this.calculateWastePerDay()
@@ -32,30 +34,49 @@ export default class PowerPlant {
     }
 
     isOperatingOrBuilding(days) {
-        if (this.isBuilding){
+        if (this.isBuilding) {
             if (this.constructionFinishTime > days) {
-                this.continueBuilding(days)
-                return this.operate(0)
-            }
-            else if (this.constructionFinishTime == days) {
-                this.continueBuilding(days)
-                this.isBuilding = false
-                this.isOperational = true
-                return this.operate(0)
-            }
-            else if (this.constructionFinishTime < days) {
-                this.isBuilding = false
-                this.isOperational = true
-                this.daysOperating = days - this.constructionFinishTime
-                this.continueBuilding(this.constructionFinishTime)
-                return this.operate(this.daysOperating)
-            }
-            else{
+                this.continueBuilding(days);
+                return this.operate(0);
+            } else if (this.constructionFinishTime == days) {
+                this.continueBuilding(days);
+                this.isBuilding = false;
+                this.isOperational = true;
+                return this.operate(0);
+            } else if (this.constructionFinishTime < days) {
+                this.isBuilding = false;
+                this.isOperational = true;
+                this.daysOperating = days - this.constructionFinishTime;
+                this.continueBuilding(this.constructionFinishTime);
+                return this.operate(this.daysOperating);
+            } else {
                 throw new Error("Unhandled case in isOperatingOrBuilding/PowerPlant.js");
             }
+        } else if (!this.isBuilding && !this.isStartedbuilding) {
+            if (this.startedBuildingIn > days) {
+                this.isBuilding = false;
+                this.isStartedbuilding = false;
+                this.prepareForBuilding(days);
+                return this.operate(0);
+            } else if (this.startedBuildingIn == days) {
+                this.prepareForBuilding(days); 
+                this.isBuilding = true;
+                this.isStartedbuilding = true;
+                return this.operate(0);
+            } else if (this.startedBuildingIn < days) {
+                this.isBuilding = true;
+                this.isStartedbuilding = true;
+                this.prepareForBuilding(this.startedBuildingIn)
+                this.continueBuilding(days - this.startedBuildingIn); 
+                return this.operate(0);
+            }
         } else {
-            return this.operate(days)
+            return this.operate(days);
         }
+    }    
+
+    prepareForBuilding(days){
+        this.startedBuildingIn -= days
     }
 
     operate(days) {
