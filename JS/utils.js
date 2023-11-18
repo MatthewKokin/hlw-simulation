@@ -5,7 +5,6 @@ export function createPowerPlants() {
     const powerPlants = [];
     for (let i = 0; i < data.length; i++) {
         powerPlants.push(new PowerPlant(data[i].name, data[i].capacity, data[i].days_before_closing, data[i].isOperational, data[i].construction_done, data[i].isBuilding, data[i].type, data[i].isStartedbuilding, data[i].startedBuildingIn))
-        console.log(data[i].startedBuildingIn, data[i].isStartedbuilding);
     }
     return powerPlants
 }
@@ -33,7 +32,6 @@ export function setOperationalDays(plants, days) {
             throw new Error("Unhandled case")
         }
     }
-    console.log(totalElectricityThisYear);
 
     return [wasteVolumeAllTimeTotal, wasteVolumesThisYear, totalUraniumUsedThisYear, totalElectricityThisYear, BWRwaste, PWRwaste];
 }
@@ -68,3 +66,7 @@ export function updateDashboard(plants, wasteVolumesThisYear) {
     dashboardEl.innerHTML = dashboardHTML;
 }
 
+export function interimStorageCost(intermimTotalCost, allTimeWasteThisYear) {
+    // cost in £millions assuming it is 25k / year per m^3
+    return intermimTotalCost + allTimeWasteThisYear * 0.025
+}

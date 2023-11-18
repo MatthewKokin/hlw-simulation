@@ -1,4 +1,4 @@
-import {createPowerPlants, setOperationalDays, updateDashboard} from './utils.js'
+import {createPowerPlants, setOperationalDays, updateDashboard, interimStorageCost} from './utils.js'
 import { setupChart, updateChart } from './graph.js';
 
 const dateEl = document.getElementById("date-el")
@@ -9,10 +9,13 @@ const uraniumMassEl = document.getElementById("uranium-mass-used")
 const energyEl = document.getElementById("energy-generated")
 const BWREl = document.getElementById("BWR-containers")
 const PWREl = document.getElementById("PWR-containers")
+const interimEl = document.getElementById("interim")
+
 
 
 let powerPlants = createPowerPlants()
 let zeroArray = new Array(powerPlants.length).fill(0);
+let intermimTotalCost = 41.75
 
 let count = 2023;
 
@@ -28,11 +31,13 @@ function increment() {
 
     wasteEl.innerHTML = "New waste generated: " + wasteVolumeAllTimeTotal.toFixed(0) + " m<sup>3</sup>"
     const allTimeWaste = wasteVolumeAllTimeTotal + 1670
+    intermimTotalCost = interimStorageCost(intermimTotalCost, allTimeWaste)
     totalWasteEl.innerHTML = "Total waste: " + allTimeWaste.toFixed(0) + " m<sup>3</sup>"
     uraniumMassEl.innerHTML = "Uranium: " + totalUraniumUsedThisYear.toFixed(0) + " tonne / year"
     energyEl.innerHTML = "Energy: " + totalElectricityThisYear.toFixed(2) + " GW / year"
     BWREl.innerHTML = "BWR: " + BWRcontainers.toFixed(0) + " containers"
     PWREl.innerHTML = "PWR: " + PWRcontainers.toFixed(0) + " containers"
+    interimEl.innerHTML = "Interim Storage: £" + intermimTotalCost.toFixed(0) + " mill spent"
 
     updateChart(count, wasteVolumeAllTimeTotal, totalUraniumUsedThisYear, totalElectricityThisYear)
     updateDashboard(powerPlants, wasteVolumesThisYear);
