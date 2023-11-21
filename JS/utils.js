@@ -68,5 +68,5 @@ export function updateDashboard(plants, wasteVolumesThisYear) {
 
 export function interimStorageCost(intermimTotalCost, allTimeWasteThisYear) {
     // cost in £millions assuming it is 25k / year per m^3
-    return intermimTotalCost + allTimeWasteThisYear * 0.025
+    return intermimTotalCost + allTimeWasteThisYear * 0.030
 }

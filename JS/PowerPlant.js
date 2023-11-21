@@ -22,10 +22,10 @@ export default class PowerPlant {
     calculateUraniumYearlyConsumption(){
         let tonnesOfUperYear
         if (this.type === "AGR") {
-            tonnesOfUperYear = 78
+            tonnesOfUperYear = 54
             this.uraniumYearlyConsumption = this.capacity * tonnesOfUperYear
         } else if (this.type === "EPR"){
-            tonnesOfUperYear = 22
+            tonnesOfUperYear = 16.7
             this.uraniumYearlyConsumption = this.capacity * tonnesOfUperYear
         } else if (this.type === "PWR"){
             tonnesOfUperYear = 4.75 * 18.4
@@ -138,6 +138,6 @@ export default class PowerPlant {
     }
 
     useUranium(days){
-        return (this.uraniumYearlyConsumption / 365)*days
+        return (this.uraniumYearlyConsumption / 365)*days*0.89
     }
 }
