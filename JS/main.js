@@ -29,7 +29,7 @@ function increment() {
     const BWRcontainers = BWRwaste / 1.703
     const PWRcontainers = PWRwaste / 0.981
 
-    wasteEl.innerHTML = "New waste generated: " + wasteVolumeAllTimeTotal.toFixed(0) + " m<sup>3</sup>"
+    wasteEl.innerHTML = "New waste: " + wasteVolumeAllTimeTotal.toFixed(0) + " m<sup>3</sup>"
     const allTimeWaste = wasteVolumeAllTimeTotal + 1670
     intermimTotalCost = interimStorageCost(intermimTotalCost, allTimeWaste)
     totalWasteEl.innerHTML = "Total waste: " + allTimeWaste.toFixed(0) + " m<sup>3</sup>"
@@ -37,7 +37,7 @@ function increment() {
     energyEl.innerHTML = "Energy: " + totalElectricityThisYear.toFixed(2) + " GW / year"
     BWREl.innerHTML = "BWR: " + BWRcontainers.toFixed(0) + " containers"
     PWREl.innerHTML = "PWR: " + PWRcontainers.toFixed(0) + " containers"
-    interimEl.innerHTML = "Interim Storage: £" + intermimTotalCost.toFixed(0) + " mill spent"
+    interimEl.innerHTML = "Interim Storage: £" + intermimTotalCost.toFixed(0) + " mill"
 
     updateChart(count, wasteVolumeAllTimeTotal, totalUraniumUsedThisYear, totalElectricityThisYear)
     updateDashboard(powerPlants, wasteVolumesThisYear);
