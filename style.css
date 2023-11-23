@@ -3,12 +3,19 @@ body{
     font-family: 'Inter', sans-serif;
     background-color: whitesmoke;
 }
+
+*, *::before, *::after {
+    box-sizing: border-box;    
+}
+
+
 .container{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
-    height: 500px;
+    height: fit-content;
 }
 
 .readings{
@@ -44,7 +51,6 @@ body{
     background-color: white;
     width: 87%;
     height: 370px;
-    border: 1px solid red;
     border: 1px solid #EAECF0;
     border-radius: 10px;
     margin: auto;
@@ -55,6 +61,12 @@ body{
 canvas {
     margin: auto;
     min-height: 300px;
+}
+
+.main-h{
+    border: 1px solid red;
+    margin-top: 20px;
+    text-align: center;
 }
 
 .chart h2 {
@@ -68,8 +80,10 @@ canvas {
 }
 
 #increment-btn{
+    margin-top: 20px;
+    margin-bottom: 20px;
     border: none;
-    padding: 50px 200px;
+    padding: 10px 20px;
 }
 
 .dashboard-intro{
@@ -77,6 +91,19 @@ canvas {
 }
 
 .dashboard-items{
+}
+
+.btn-cpntainer{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    border: 1px solid red;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 87%;
+    background-color: white;
+    border-radius: 20px;
 }
 
 .item {

@@ -6,36 +6,37 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div class="container">
-            <h1>High Level Waste (HLW) simulation</h1>
-            <h2 id="date-el">November 2023</h2>
-            <button id="increment-btn">+1 year</button>
-            <div class="readings">
-                <h2>Readings</h2>
-                <div class="params hor">
-                    <p id="total-waste-value">Total waste: 1670 m<sup>3</sup></p>
-                    <p id="uranium-mass-used">Uranium: 0 tonne / year</p> <!-- (Was used this year) -->
-                    <p id="energy-generated">Energy: 0 GW / year</p> <!-- (Was produced this year) -->
-                    <p id="interim">Interim Storage: £50 mill</p> <!-- (Was produced this year) -->
-                </div>
-                <h3>HLW</h3>
-                <div class="hlw-info hor">
-                    <p id="waste-value">New waste: 0 m<sup>3</sup></p>
-                    <p id="BWR-containers">BWR: 0 containers</p>
-                    <p id="PWR-containers">PWR: 0 containers</p>
-                </div>
-                <div>
-
-                </div>
-            </div>
-        </div>
-
+        <h1 class="main-h">High Level Waste (HLW) simulation</h1>
         <div class="chart">
             <h2 class="chart-headding">Graph</h2>
             <canvas id="waste-chart"></canvas>
         </div>
 
         <div class="dashboard">
+            <div class="container">
+                <div class="btn-cpntainer">
+                    <h2 id="date-el">November 2023</h2>
+                    <button id="increment-btn">+1 year</button>
+                </div>
+                <div class="readings">
+                    <h2>Readings</h2>
+                    <div class="params hor">
+                        <p id="total-waste-value">Total waste: 1670 m<sup>3</sup></p>
+                        <p id="uranium-mass-used">Uranium: 0 tonne / year</p> <!-- (Was used this year) -->
+                        <p id="energy-generated">Energy: 0 GW / year</p> <!-- (Was produced this year) -->
+                        <p id="interim">Interim Storage: £50 mill</p> <!-- (Was produced this year) -->
+                    </div>
+                    <h3>HLW</h3>
+                    <div class="hlw-info hor">
+                        <p id="waste-value">New waste: 0 m<sup>3</sup></p>
+                        <p id="BWR-containers">BWR: 0 containers</p>
+                        <p id="PWR-containers">PWR: 0 containers</p>
+                    </div>
+                <div>
+    
+                    </div>
+                </div>
+            </div>
             <h1>Dashboard</h1>
             <table class="dashboard-table">
                 <thead>
